@@ -18,6 +18,6 @@ public class BookController {
     public String getBooks(Model model){ //view gets copy of model
 
         model.addAttribute("books", bookRepository.findAll()); //if /books is called, getBooks is called and provides a model object to it
-        return "books/list";
+        return "books/list"; //looks for books in the template/books/list file
     }
 }
