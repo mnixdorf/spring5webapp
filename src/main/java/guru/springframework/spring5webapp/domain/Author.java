@@ -1,10 +1,16 @@
 package guru.springframework.spring5webapp.domain;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class Author {
+    @Id //persistent id for JPA
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String firstName;
     private String lastName;
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 
     public Author() {
@@ -18,6 +24,14 @@ public class Author {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setFirstName(String firstName) {
