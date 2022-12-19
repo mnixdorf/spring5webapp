@@ -12,15 +12,21 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String address;
     private String name;
+    private String addressLine1;
+    private String city;
+    private String state;
+    private String zip;
 
     public Publisher() {
     }
 
-    public Publisher(String address, String name) {
-        this.address = address;
+    public Publisher(String name, String addressLine1, String city, String state, String zip) {
         this.name = name;
+        this.addressLine1 = addressLine1;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
     }
 
     public Long getId() {
@@ -31,13 +37,6 @@ public class Publisher {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getName() {
         return name;
@@ -47,12 +46,47 @@ public class Publisher {
         this.name = name;
     }
 
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
     @Override
     public String toString() {
         return "Publisher{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
                 ", name='" + name + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
                 '}';
     }
 
@@ -63,18 +97,11 @@ public class Publisher {
 
         Publisher publisher = (Publisher) o;
 
-        if (!Objects.equals(id, publisher.id)) return false;
-        if (!Objects.equals(address, publisher.address)) return false;
-        return Objects.equals(name, publisher.name);
+        return Objects.equals(id, publisher.id);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
-
-
 }
